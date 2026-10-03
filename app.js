@@ -1,9 +1,6 @@
 const STORAGE_KEY = "orbit-study-planner-v11";
-const THEME_CLASSES = ["theme-paper","theme-white","theme-rose","theme-cobalt","theme-midnight","theme-forest","theme-black","theme-vermilion"];
-const VALID_THEMES = ["classic","paper","white","rose","cobalt","midnight","forest","black","vermilion"];
-const UI_STYLE_CLASSES = ["ui-noto","ui-studio","ui-terminal"];
-const VALID_UI_STYLES = ["noto","studio","terminal"];
-
+const THEME_CLASSES = ["theme-ember","theme-white","theme-rose","theme-cobalt","theme-midnight","theme-forest","theme-black","theme-vermilion"];
+const VALID_THEMES = ["classic","ember","white","rose","cobalt","midnight","forest","black","vermilion"];
 const defaultData = {
   lessons: [],
   todos: [],
@@ -14,7 +11,6 @@ const defaultData = {
   streakCheckins: {},
   dailyCompletions: {},
   theme: "classic",
-  uiStyle: "noto",
   calTab: "month",
   mode: "planner",
   texture: true,
@@ -87,9 +83,9 @@ function loadData() {
         const t = saved?.theme;
         if (t === "sage") return "cobalt";
         if (t === "plum") return "vermilion";
+        if (t === "paper") return "ember";
         return VALID_THEMES.includes(t) ? t : "classic";
       })(),
-      uiStyle: VALID_UI_STYLES.includes(saved?.uiStyle) ? saved.uiStyle : "noto",
       calTab: ["month","timetable","events"].includes(saved?.calTab) ? saved.calTab : "month",
       particles: Boolean(saved?.particles),
       spaceBackground: saved?.spaceBackground !== false,
@@ -312,7 +308,7 @@ function drawParticles() {
   const ring = root && root.querySelector(".cursor-ring");
   if (!root || !dot || !ring) return;
 
-  const HOVER_SEL = "button, a, [role='button'], .map-node, .map-node-head, .habit-check, .habit-day-dot, .lesson-block, .theme-swatch, .theme-button, .mood-button, label.switch, .note-list-item, .spotify-preset-btn, .calendar-day, .ui-style-btn, .particle-type-btn, .cmd-item, .header-search-btn, .nav button, .mode-switch button, .primary-button, .secondary-button, .danger-button, .ghost-button, .icon-button, .tag, input[type='checkbox'], input[type='radio'], select, .lesson-day-header, .habit-rename-btn";
+  const HOVER_SEL = "button, a, [role='button'], .map-node, .map-node-head, .habit-check, .habit-day-dot, .lesson-block, .theme-swatch, .theme-button, .mood-button, label.switch, .note-list-item, .spotify-preset-btn, .calendar-day, .particle-type-btn, .cmd-item, .header-search-btn, .nav button, .mode-switch button, .primary-button, .secondary-button, .danger-button, .ghost-button, .icon-button, .tag, input[type='checkbox'], input[type='radio'], select, .lesson-day-header, .habit-rename-btn";
   const TEXT_SEL = "input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='button']):not([type='submit']), textarea, [contenteditable='true'], .note-editor";
 
   let mx = -100, my = -100;
@@ -516,20 +512,8 @@ function applyTheme() {
   document.querySelectorAll(".theme-swatch, .theme-button").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.theme === data.theme);
   });
-  applyUiStyle();
   updateAtmosphere();
 }
-function applyUiStyle() {
-  const style = VALID_UI_STYLES.includes(data.uiStyle) ? data.uiStyle : "noto";
-  data.uiStyle = style;
-  document.body.classList.remove(...UI_STYLE_CLASSES);
-  document.body.classList.add(`ui-${style}`);
-  document.querySelectorAll(".ui-style-btn").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.uistyle === style);
-  });
-}
-
-
 // ========== POMODORO ==========
 function setPomodoroMode(mode, resetTime = true) {
   pomodoroMode = mode;
@@ -2080,11 +2064,11 @@ function getThemeVars() {
       yellow: "#e0b53a", panel: "#ffffff", tag: "#2a5f48", tagBg: "#d4e8dc",
       soft: "rgba(42,95,72,0.08)"
     },
-    paper: {
-      bg: "#f0e6d0", ink: "#2a2216", muted: "#6b604c", line: "#c9ba9c",
-      accent: "#4a5534", accentLight: "#dde2cc", orange: "#8f6b45",
-      yellow: "#a88b2e", panel: "#faf3e4", tag: "#4a5534", tagBg: "#dde2cc",
-      soft: "rgba(74,85,52,0.1)"
+    ember: {
+      bg: "#f7f0e6", ink: "#2a1f14", muted: "#7a6550", line: "#e0d2c0",
+      accent: "#c45c26", accentLight: "#f5e4d4", orange: "#d4782e",
+      yellow: "#e8a838", panel: "#fffbf5", tag: "#c45c26", tagBg: "#f5e4d4",
+      soft: "rgba(196,92,38,0.1)"
     },
     white: {
       bg: "#f4f4f4", ink: "#111111", muted: "#5c5c5c", line: "#cfcfcf",
@@ -2932,14 +2916,6 @@ document.querySelectorAll(".theme-swatch, .theme-button").forEach(btn => {
     showToast(`${btn.title || data.theme}`);
   });
 });
-document.querySelectorAll(".ui-style-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    data.uiStyle = btn.dataset.uistyle;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    applyUiStyle();
-    showToast(`${btn.title || data.uiStyle} style`);
-  });
-});
 
 $("#settingSpace")?.addEventListener("change", () => {
   data.spaceBackground = $("#settingSpace").checked;
@@ -3357,7 +3333,7 @@ function getCmdCommands(query) {
   ];
   // Themes
   VALID_THEMES.forEach(t => {
-    const titleMap = { classic: "Noto", cobalt: "Cobalt", vermilion: "Vermilion" };
+    const titleMap = { classic: "Noto", ember: "Ember", cobalt: "Cobalt", vermilion: "Vermilion" };
     const title = titleMap[t] || (t.charAt(0).toUpperCase() + t.slice(1));
     cmds.push({
       kind: "Theme",
@@ -3370,17 +3346,6 @@ function getCmdCommands(query) {
       }
     });
   });
-  VALID_UI_STYLES.forEach(s => {
-    cmds.push({
-      kind: "Style",
-      label: `UI style: ${s.charAt(0).toUpperCase() + s.slice(1)}`,
-      run: () => {
-        data.uiStyle = s;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        applyUiStyle();
-        showToast(s + " style");
-      }
-    });
   });
   // Search data
   data.todos.forEach(t => {
