@@ -6,17 +6,26 @@ A warm, offline-first personal planner & study companion.
 
 ```
 noto-planner/
-├── index.html          # App shell (HTML structure only)
+├── index.html                 # App shell (HTML only)
 ├── css/
-│   └── styles.css      # Design system, themes, components, layout
+│   ├── design-system.css      # Tokens, UI styles, atmosphere, cursor, cmd palette
+│   ├── layout.css             # Sidebar, main, panels, study, habits, calendar
+│   ├── features.css           # Lessons, notes, dashboard, living map
+│   └── themes.css             # Color themes + mobile styles
 ├── js/
-│   └── app.js          # Application logic (data, views, features)
+│   ├── 01-core.js             # Storage, data, undo, particles, cursor
+│   ├── 02-timer-planner.js    # Pomodoro, today map, habits
+│   ├── 03-calendar-lessons.js # Spotify, study focus, calendar, lessons
+│   ├── 04-notes-progress.js   # Todos, notes, events, progress
+│   ├── 05-mini-views.js       # Mini noto (PiP), view switching
+│   ├── 06-listeners-cmd.js    # Event listeners, command palette
+│   └── 07-space-init.js       # Deep space background + init
 └── README.md
 ```
 
-## Running locally
+Scripts load in order and share the same global scope (same as the original single file).
 
-Open `index.html` in a browser, or serve the folder:
+## Running locally
 
 ```bash
 npx serve .
@@ -24,26 +33,29 @@ npx serve .
 python3 -m http.server 8080
 ```
 
+Open the URL in your browser.
+
 ## Optional assets
 
-Theme decorations reference these image files in the same directory as `index.html` (or adjust paths):
+Theme decorations look for (same folder as `index.html`):
 
 - `leaf.png`
 - `petal.png`
 - `moon.png`
 
-They are optional — missing images are removed gracefully by the app.
+Missing images are removed automatically.
 
 ## Features
 
 - Planner & Study modes
 - Living day map, tasks, calendar, timetable
-- Pomodoro timer, habits, mood tracking, notes
+- Pomodoro, habits, mood, notes
 - Themes, UI styles, particles, space background, custom cursor
-- Command palette (`⌘K` / `Ctrl+K`), Mini noto (Picture-in-Picture)
-- All data stored in `localStorage` (offline-first)
+- Command palette (`⌘K` / `Ctrl+K`), Mini noto
+- Data in `localStorage` (offline-first)
 
 ## Expanding later
 
-- **CSS**: Section markers (`/* ========== ... ========== */`) make it easy to extract modules (e.g. `css/themes.css`, `css/calendar.css`).
-- **JS**: Logical blocks are labeled (storage, calendar, lessons, notes, timer, map, command palette, space, mini-noto). Split into modules when ready and load them from `index.html` in order.
+- Add a new CSS file under `css/` and link it in `index.html`
+- Add a new JS module under `js/` and include it **after** the modules it depends on
+- Section comments inside each file mark logical blocks for further splits
