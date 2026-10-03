@@ -1,61 +1,81 @@
-# noto. Planner
+# noto.
 
-A warm, offline-first personal planner & study companion.
+A calm, local-first personal planner and study companion.
 
-## Structure
+**Live demo:** [https://nonamemrfk.github.io/noto-planner/](https://nonamemrfk.github.io/noto-planner/)
+
+## What is noto.?
+
+noto. is the workspace you open when you sit down to actually get your day done — not a Notion clone, not a SaaS dashboard, and not a pile of disconnected widgets.
+
+It keeps **today’s tasks, schedule, lessons, focus, and notes** in one coherent place, with themes that feel intentional and data that never leaves your browser.
+
+## Features
+
+- **Today (living map)** — hub for tasks, schedule timeline, study streak, notes, habits, and progress
+- **Tasks** — dated to-dos with categories, completion, undo
+- **Calendar** — month view, events, and weekly lesson timetable
+- **Lessons** — school timetable with homework → auto tasks
+- **Notes** — rich-ish editor with search
+- **Mood & streaks** — daily check-in and progress history
+- **Focus** — Pomodoro timer, Spotify embed, study mode
+- **Mini noto** — picture-in-picture / floating companion
+- **Themes & UI styles** — nine color worlds × three shape languages
+- **Command palette** — `⌘K` / `Ctrl+K`
+- **Export / import** — JSON backups of all local data
+
+## Tech stack
+
+- Plain HTML, CSS, and JavaScript (no framework, no build step)
+- `localStorage` for persistence
+- Optional: Document Picture-in-Picture, canvas particles / space background
+
+## Architecture
 
 ```
-noto-planner/
-├── index.html                 # App shell (HTML only)
-├── css/
-│   ├── design-system.css      # Tokens, UI styles, atmosphere, cursor, cmd palette
-│   ├── layout.css             # Sidebar, main, panels, study, habits, calendar
-│   ├── features.css           # Lessons, notes, dashboard, living map
-│   └── themes.css             # Color themes + mobile styles
-├── js/
-│   ├── 01-core.js             # Storage, data, undo, particles, cursor
-│   ├── 02-timer-planner.js    # Pomodoro, today map, habits
-│   ├── 03-calendar-lessons.js # Spotify, study focus, calendar, lessons
-│   ├── 04-notes-progress.js   # Todos, notes, events, progress
-│   ├── 05-mini-views.js       # Mini noto (PiP), view switching
-│   ├── 06-listeners-cmd.js    # Event listeners, command palette
-│   └── 07-space-init.js       # Deep space background + init
-└── README.md
+index.html          App shell
+css/
+  design-system.css Tokens, chrome, cursor, command palette
+  layout.css        Sidebar, panels, forms, study, habits, calendar shell
+  features.css      Lessons, notes, living map, modals
+  themes.css        Color themes + responsive / mobile
+js/
+  01-core.js        Storage, undo, particles, cursor, theme apply
+  02-timer-planner.js  Pomodoro, Today map, habits, progress widgets
+  03-calendar-lessons.js  Calendar, lessons, Spotify
+  04-notes-progress.js    Notes, events list, history
+  05-mini-views.js        Mini noto, view switching
+  06-listeners-cmd.js     Events, forms, command palette
+  07-space-init.js        Deep-space canvas + boot
 ```
 
-Scripts load in order and share the same global scope (same as the original single file).
+Scripts load in order and share one global scope (same as the original single-file app).
+
+## Data
+
+All planner data is stored under the key `orbit-study-planner-v11` in `localStorage`.
+
+- Nothing is sent to a server.
+- Use **Settings → Your data → Export backup** before clearing site data or switching browsers.
+- Import merges validated arrays and never silently wipes unknown structure without confirmation.
 
 ## Running locally
 
 ```bash
+# any static server
 npx serve .
 # or
 python3 -m http.server 8080
 ```
 
-Open the URL in your browser.
+Open the printed URL. Optional images (`leaf.png`, `petal.png`, `moon.png`) enhance theme atmospheres; missing files are removed automatically.
 
-## Optional assets
+## Roadmap (realistic)
 
-Theme decorations look for (same folder as `index.html`):
+- Stronger Today → Focus handoff (start timer on a specific task)
+- Optional ICS export for events
+- PWA install / offline shell
 
-- `leaf.png`
-- `petal.png`
-- `moon.png`
+## License
 
-Missing images are removed automatically.
-
-## Features
-
-- Planner & Study modes
-- Living day map, tasks, calendar, timetable
-- Pomodoro, habits, mood, notes
-- Themes, UI styles, particles, space background, custom cursor
-- Command palette (`⌘K` / `Ctrl+K`), Mini noto
-- Data in `localStorage` (offline-first)
-
-## Expanding later
-
-- Add a new CSS file under `css/` and link it in `index.html`
-- Add a new JS module under `js/` and include it **after** the modules it depends on
-- Section comments inside each file mark logical blocks for further splits
+Personal / portfolio use. Adapt freely with credit appreciated.
