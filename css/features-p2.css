@@ -1,0 +1,394 @@
+/* features part 2 */
+      margin-top: 0;
+      padding: 5px 8px;
+      border-radius: 7px;
+      background: #f7d6d2;
+      color: var(--red);
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      border: 0;
+      cursor: pointer;
+    }
+    .homework-button:hover { background: #efc4bf; transform: translateY(-1px); }
+
+    /* ========== NOTES ========== */
+    .notes-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 18px;
+      min-height: 620px;
+    }
+
+    .notes-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .notes-search {
+      position: relative;
+    }
+    .notes-search input {
+      padding-left: 38px;
+    }
+    .notes-search::before {
+      content: "⌕";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .notes-list {
+      flex: 1;
+      overflow-y: auto;
+      display: grid;
+      gap: 6px;
+      max-height: 520px;
+      padding-right: 4px;
+    }
+
+    .note-list-item {
+      padding: 14px 14px;
+      border-radius: var(--radius-md);
+      background: var(--panel-strong);
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      cursor: pointer;
+      transition: 0.2s var(--ease);
+      text-align: left;
+    }
+    .note-list-item:hover {
+      border-color: var(--green);
+      transform: translateX(3px);
+    }
+    .note-list-item.active {
+      background: var(--green-light);
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--green) 15%, transparent);
+    }
+    .note-list-item h4 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      letter-spacing: -0.3px;
+    }
+    .note-list-item p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.4;
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .notes-editor-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .notes-editor-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .notes-editor-header input {
+      flex: 1;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: -0.4px;
+      padding: 12px 14px;
+    }
+
+    .note-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--accent-light) 40%, var(--panel-strong));
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    }
+    .note-toolbar button {
+      padding: 7px 11px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: bold;
+      min-width: 34px;
+    }
+    .note-toolbar button:hover {
+      background: var(--panel-strong);
+      border-color: var(--line);
+    }
+    .note-toolbar button:active {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .note-editor {
+      flex: 1;
+      min-height: 380px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      outline: 0;
+      background: var(--panel-strong);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-y: auto;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .note-editor:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 12%, transparent);
+    }
+    .note-editor:empty:before {
+      content: attr(data-placeholder);
+      color: #a8a89e;
+    }
+    .note-editor ul, .note-editor ol { padding-left: 22px; }
+    .note-editor blockquote {
+      margin: 10px 0;
+      padding: 8px 14px;
+      border-left: 3px solid var(--green);
+      background: color-mix(in srgb, var(--green-light) 50%, transparent);
+      border-radius: 0 8px 8px 0;
+    }
+    .note-editor h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .note-editor .note-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 4px 0;
+      line-height: 1.45;
+    }
+    .note-editor .note-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin: 3px 0 0;
+      flex: 0 0 16px;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+    .note-editor .note-check span,
+    .note-editor .note-check {
+      word-break: break-word;
+    }
+
+    .notes-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .notes-empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      text-align: center;
+      gap: 8px;
+    }
+    .notes-empty-state strong {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* ========== DASHBOARD EXTRAS ========== */
+    .dashboard-feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 0.9fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .live-time {
+      margin-top: 6px;
+      font-family: var(--font-sans);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -2.2px;
+      line-height: 1;
+    }
+    .live-date {
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .daily-progress-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 150px;
+    }
+
+    .progress-circle {
+      --progress: 0;
+      width: 132px;
+      height: 132px;
+      flex: 0 0 132px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--accent) calc(var(--progress) * 1%), var(--line) 0);
+      position: relative;
+      transition: background 0.6s var(--ease);
+    }
+    .progress-circle::before {
+      content: "";
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: var(--panel-strong);
+    }
+    .progress-circle-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: var(--font-sans);
+    }
+    .progress-circle-inner strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .progress-circle-inner span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .daily-progress-copy h3 { margin: 0; font-size: 17px; }
+    .daily-progress-copy p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .completed-count {
+      font-family: var(--font-sans);
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .streak-main { display: flex; align-items: center; gap: 12px; }
+    .streak-flame {
+      width: 50px;
+      height: 50px;
+      flex: 0 0 50px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-md);
+      background: var(--orange-light);
+      font-size: 24px;
+    }
+    .streak-number {
+      font-family: var(--font-sans);
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 0.95;
+    }
+    .streak-label {
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+    .streak-status {
+      margin-top: 6px;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      text-align: center;
+    }
+    .streak-week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-top: 12px;
+    }
+    .streak-day {
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 8px;
+      text-align: center;
+    }
+    .streak-dot {
+      width: 22px;
+      height: 22px;
+      margin: 4px auto 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--line);
+      font-size: 9px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .streak-dot.active {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.08);
+    }
+    .streak-dot.today { box-shadow: 0 0 0 3px var(--accent-light); }
+
+    .mood-panel { margin-top: 18px; }
+    .mood-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
+    }
+    .mood-date-line {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 11px;
+    }
+    .mood-date-line strong { color: var(--ink); font-size: 13px; }
+
+    .mood-options {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .mood-button {
+      min-height: 70px;
+      padding: 8px 4px;
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      background: var(--panel-strong);

@@ -1,0 +1,402 @@
+/* Color themes and mobile native styles */
+    /* ========== THEMES ========== */
+
+    /* ========== COLOR THEMES (9) ========== */
+    /* 1. Noto = :root — warm ivory, forest green, muted gold */
+
+    /* Ensure light themes always separate bg / surface / elevated */
+    /* —— Light palettes —— */
+    body.theme-paper,
+    body.theme-white,
+    body.theme-rose,
+    body.theme-cobalt {
+      --surface: var(--panel);
+      --surface-elevated: var(--panel-strong);
+      --surface-hover: color-mix(in srgb, var(--accent-light) 45%, var(--panel-strong));
+      --text: var(--ink);
+      --text-secondary: var(--muted);
+      --text-muted: var(--faint);
+      --on-accent: var(--accent-contrast);
+      --toast-bg: var(--ink);
+      --toast-fg: var(--panel-strong);
+      --modal-header-bg: color-mix(in srgb, var(--accent-light) 40%, var(--panel-strong));
+    }
+
+    /* Paper — warm cream + dark ink + muted olive */
+    body.theme-paper {
+      --bg: #f0e8d6;
+      --panel: #f7f0e2;
+      --panel-strong: #fffaf0;
+      --elevated: #ffffff;
+      --ink: #2a2216;
+      --muted: #6b604c;
+      --faint: #9a8f7a;
+      --line: #d4c8b0;
+      --green: #4a5534;
+      --green-light: #e2e6d4;
+      --orange: #8f6b45;
+      --orange-light: #efe6d8;
+      --yellow: #a88b2e;
+      --red: #8a3e32;
+      --sidebar: #2a2418;
+      --brand-ink: #2a2418;
+      --accent: #4a5534;
+      --accent-hover: #3a4428;
+      --accent-light: #e2e6d4;
+      --accent-contrast: #fffaf0;
+      --success: #4a5534;
+      --warning: #8f6b45;
+      --error: #8a3e32;
+      --weekend-bg: rgba(143, 107, 69, 0.09);
+      --node-bg: #fffaf0;
+      --node-border: #d4c8b0;
+      --node-hub-border: color-mix(in srgb, var(--accent) 40%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 30%, var(--line));
+      --particle-color: #4a5534;
+    }
+
+    /* White — pure monochrome */
+    body.theme-white {
+      --bg: #f4f4f4;
+      --panel: #fafafa;
+      --panel-strong: #ffffff;
+      --elevated: #ffffff;
+      --ink: #111111;
+      --muted: #5c5c5c;
+      --faint: #8a8a8a;
+      --line: #d8d8d8;
+      --green: #1a1a1a;
+      --green-light: #ececec;
+      --orange: #4a4a4a;
+      --orange-light: #eeeeee;
+      --yellow: #3d3d3d;
+      --red: #6b2a2a;
+      --sidebar: #111111;
+      --brand-ink: #111111;
+      --accent: #1a1a1a;
+      --accent-hover: #000000;
+      --accent-light: #ececec;
+      --accent-contrast: #ffffff;
+      --success: #1a1a1a;
+      --warning: #4a4a4a;
+      --error: #6b2a2a;
+      --weekend-bg: rgba(0, 0, 0, 0.03);
+      --node-bg: #ffffff;
+      --node-border: #d8d8d8;
+      --node-hub-border: color-mix(in srgb, var(--accent) 35%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 22%, var(--line));
+      --particle-color: #1a1a1a;
+    }
+    body.theme-white .panel,
+    body.theme-white .map-node,
+    body.theme-white .stat,
+    body.theme-white .study-card,
+    body.theme-white .habit-card,
+    body.theme-white .note-list-item,
+    body.theme-white .calendar-day,
+    body.theme-white .lesson-day,
+    body.theme-white .compact-status,
+    body.theme-white .setting-row,
+    body.theme-white .notes-editor-panel,
+    body.theme-white .note-editor,
+    body.theme-white .homework-modal {
+      border-color: var(--line);
+      box-shadow: none;
+    }
+    body.theme-white .map-hub {
+      border-color: color-mix(in srgb, var(--ink) 25%, var(--line));
+    }
+    body.theme-white .study-timer-card {
+      background: var(--ink);
+      color: #fff;
+    }
+    body.theme-white .study-timer-card.is-break {
+      background: #4a4a4a;
+    }
+    body.theme-white input,
+    body.theme-white textarea,
+    body.theme-white select {
+      border-color: var(--line);
+      background: #fff;
+    }
+
+    /* Rose — warm blush + dusty rose + burgundy */
+    body.theme-rose {
+      --bg: #f7eee9;
+      --panel: #faf5f2;
+      --panel-strong: #fff9f7;
+      --elevated: #ffffff;
+      --ink: #2c1e22;
+      --muted: #7a5e64;
+      --faint: #a89096;
+      --line: #e5d4cf;
+      --green: #8f3d4a;
+      --green-light: #f0dde0;
+      --orange: #a65d6a;
+      --orange-light: #f5e8ea;
+      --yellow: #c48a90;
+      --red: #8f3d4a;
+      --sidebar: #2c1a1e;
+      --brand-ink: #2c1a1e;
+      --accent: #a65d6a;
+      --accent-hover: #8f3d4a;
+      --accent-light: #f0dde0;
+      --accent-contrast: #fff9f7;
+      --success: #5a6b52;
+      --warning: #a65d6a;
+      --error: #8f3d4a;
+      --weekend-bg: rgba(166, 93, 106, 0.08);
+      --node-bg: #fff9f7;
+      --node-border: #e5d4cf;
+      --node-hub-border: color-mix(in srgb, var(--accent) 40%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 30%, var(--line));
+      --particle-color: #a65d6a;
+    }
+
+    /* Cobalt — off-white, near-black, deep cobalt, electric-blue accents */
+    body.theme-cobalt {
+      --bg: #eef1f6;
+      --panel: #f3f6fb;
+      --panel-strong: #fafbfd;
+      --elevated: #ffffff;
+      --ink: #0c1018;
+      --muted: #556274;
+      --faint: #8792a4;
+      --line: #c5cdda;
+      --green: #1a4a8a;
+      --green-light: #d4e3f7;
+      --orange: #2f6bb8;
+      --orange-light: #e0eaf8;
+      --yellow: #3b82f6;
+      --red: #a03848;
+      --sidebar: #0a101a;
+      --brand-ink: #0a101a;
+      --accent: #1a4a8a;
+      --accent-hover: #2563b8;
+      --accent-light: #d4e3f7;
+      --accent-contrast: #fafbfd;
+      --success: #2a6b5a;
+      --warning: #2f6bb8;
+      --error: #a03848;
+      --weekend-bg: rgba(26, 74, 138, 0.07);
+      --node-bg: #fafbfd;
+      --node-border: #c5cdda;
+      --node-hub-border: color-mix(in srgb, var(--accent) 42%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 34%, var(--line));
+      --particle-color: #3b82f6;
+    }
+
+    /* —— Dark palettes —— */
+    body.theme-midnight,
+    body.theme-forest,
+    body.theme-black,
+    body.theme-vermilion {
+      --surface: var(--panel);
+      --surface-elevated: var(--panel-strong);
+      --surface-hover: color-mix(in srgb, var(--accent-light) 50%, var(--panel));
+      --text: var(--ink);
+      --text-secondary: var(--muted);
+      --text-muted: var(--faint);
+      --on-accent: var(--accent-contrast);
+      --toast-bg: var(--panel-strong);
+      --toast-fg: var(--ink);
+      --modal-header-bg: color-mix(in srgb, var(--accent) 12%, var(--panel));
+      --shadow-1: 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-2: 0 6px 20px rgba(0,0,0,0.35);
+    }
+
+    /* Midnight — deep navy + cool blue */
+    body.theme-midnight {
+      --bg: #0a0f1a;
+      --panel: #121826;
+      --panel-strong: #1a2232;
+      --elevated: #222c40;
+      --ink: #d8dee8;
+      --muted: #7e8a9c;
+      --faint: #5a6578;
+      --line: #2a3448;
+      --green: #6a9ec0;
+      --green-light: #1a2c40;
+      --orange: #8a9ab0;
+      --orange-light: #243044;
+      --yellow: #7eb0c8;
+      --red: #c07070;
+      --sidebar: #060a12;
+      --brand-ink: #060a12;
+      --accent: #6a9ec0;
+      --accent-hover: #82b4d4;
+      --accent-light: #1a2c40;
+      --accent-contrast: #0a0f1a;
+      --success: #6ab89a;
+      --warning: #c0a060;
+      --error: #c07070;
+      --weekend-bg: rgba(106, 158, 192, 0.08);
+      --node-bg: #1a2232;
+      --node-border: #2a3448;
+      --node-hub-border: color-mix(in srgb, var(--accent) 45%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 35%, var(--line));
+      --particle-color: #6a9ec0;
+    }
+
+    /* Forest — almost-black green + moss */
+    body.theme-forest {
+      --bg: #0a120c;
+      --panel: #121c14;
+      --panel-strong: #1a281c;
+      --elevated: #223028;
+      --ink: #d0dcc8;
+      --muted: #6e8470;
+      --faint: #4e6454;
+      --line: #283a2c;
+      --green: #6ab878;
+      --green-light: #1a3020;
+      --orange: #a89058;
+      --orange-light: #2a3420;
+      --yellow: #88b060;
+      --red: #c07868;
+      --sidebar: #060c08;
+      --brand-ink: #060c08;
+      --accent: #6ab878;
+      --accent-hover: #82c890;
+      --accent-light: #1a3020;
+      --accent-contrast: #0a120c;
+      --success: #6ab878;
+      --warning: #a89058;
+      --error: #c07868;
+      --weekend-bg: rgba(106, 184, 120, 0.08);
+      --node-bg: #1a281c;
+      --node-border: #283a2c;
+      --node-hub-border: color-mix(in srgb, var(--accent) 45%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 35%, var(--line));
+      --particle-color: #6ab878;
+    }
+
+    /* Black — strict monochrome (black / charcoal / white / gray only) */
+    body.theme-black {
+      --bg: #0a0a0a;
+      --panel: #141414;
+      --panel-strong: #1c1c1c;
+      --elevated: #262626;
+      --ink: #f5f5f5;
+      --muted: #9a9a9a;
+      --faint: #666666;
+      --line: #333333;
+      --green: #e8e8e8;
+      --green-light: #2a2a2a;
+      --orange: #b0b0b0;
+      --orange-light: #2a2a2a;
+      --yellow: #d0d0d0;
+      --red: #c8c8c8;
+      --sidebar: #000000;
+      --brand-ink: #000000;
+      --accent: #f0f0f0;
+      --accent-hover: #ffffff;
+      --accent-light: #2a2a2a;
+      --accent-contrast: #0a0a0a;
+      --success: #e0e0e0;
+      --warning: #b8b8b8;
+      --error: #a0a0a0;
+      --weekend-bg: rgba(255, 255, 255, 0.04);
+      --node-bg: #1c1c1c;
+      --node-border: #333333;
+      --node-hub-border: color-mix(in srgb, var(--accent) 40%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 28%, var(--line));
+      --particle-color: #e8e8e8;
+    }
+    body.theme-black .tag,
+    body.theme-black .calendar-event {
+      background: #2a2a2a;
+      color: #e8e8e8;
+    }
+    body.theme-black .homework-button {
+      background: #2a2a2a;
+      color: #f0f0f0;
+    }
+    body.theme-black .mood-button.selected {
+      border-color: #e8e8e8;
+    }
+
+    /* Vermilion — deep red/black charcoal world */
+    body.theme-vermilion {
+      --bg: #120e0c;
+      --panel: #1a1512;
+      --panel-strong: #241e1a;
+      --elevated: #2e2620;
+      --ink: #f2eae4;
+      --muted: #9a8a80;
+      --faint: #6a5c54;
+      --line: #3a302a;
+      --green: #c44a32;
+      --green-light: #2c1814;
+      --orange: #d46848;
+      --orange-light: #32241e;
+      --yellow: #d47850;
+      --red: #c44a32;
+      --sidebar: #0a0806;
+      --brand-ink: #0a0806;
+      --accent: #c44a32;
+      --accent-hover: #e05540;
+      --accent-light: #2c1814;
+      --accent-contrast: #f2eae4;
+      --success: #c47850;
+      --warning: #d46848;
+      --error: #c44a32;
+      --weekend-bg: rgba(196, 74, 50, 0.09);
+      --node-bg: #241e1a;
+      --node-border: #3a302a;
+      --node-hub-border: color-mix(in srgb, var(--accent) 48%, var(--line));
+      --map-line: color-mix(in srgb, var(--accent) 38%, var(--line));
+      --particle-color: #c44a32;
+    }
+    body.theme-vermilion .tag,
+    body.theme-vermilion .calendar-event {
+      background: color-mix(in srgb, var(--accent) 22%, var(--panel-strong));
+      color: #f0c8bc;
+    }
+    body.theme-vermilion .homework-button {
+      background: color-mix(in srgb, var(--accent) 28%, var(--panel));
+      color: #f0d0c8;
+    }
+
+@media (max-width: 1100px) {
+      .study-focus-layout { grid-template-columns: 1fr; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-feature-grid { grid-template-columns: 1fr 1fr; }
+      .lessons-section-layout { grid-template-columns: 1fr; }
+      .lessons-grid { grid-template-columns: repeat(4, minmax(130px, 1fr)); }
+      .notes-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .section-layout, .progress-history-grid, .settings-layout, .mood-layout { grid-template-columns: 1fr; }
+      .lessons-grid { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+      .compact-status-right { display: none; }
+    }
+
+    /* Dark theme date pills (all breakpoints) */
+    body.theme-midnight .date-pill,
+    body.theme-forest .date-pill,
+    body.theme-black .date-pill,
+    body.theme-vermilion .date-pill {
+      background: color-mix(in srgb, var(--panel-strong) 80%, transparent);
+      color: var(--muted);
+    }
+
+    /* ========== MOBILE NATIVE (≤768px) ========== */
+    .mobile-nav {
+      display: none;
+    }
+    .mobile-topbar {
+      display: none;
+    }
+    .mobile-page-title {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      /* Shell */
+      .app-shell {
+        display: block;
+        min-height: 100dvh;
+      }
+      .sidebar {
+        display: none !important;

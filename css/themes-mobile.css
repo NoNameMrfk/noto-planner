@@ -1,0 +1,404 @@
+/* themes part 2 - mobile */
+      }
+
+      main {
+        padding: 0 16px calc(72px + env(safe-area-inset-bottom, 0px));
+        min-height: 100dvh;
+        box-sizing: border-box;
+      }
+      main:has(#today.active) {
+        min-height: 100dvh;
+        padding-top: 0;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+      }
+
+      /* Hide desktop chrome pieces */
+      #miniNotoBtn,
+      .header-search kbd,
+      .map-hint,
+      .compact-status {
+        display: none !important;
+      }
+      #mainTopbar {
+        display: none !important;
+      }
+
+      /* Mobile top bar */
+      .mobile-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        margin: 0 -16px 12px;
+        padding: 10px 16px;
+        padding-top: max(10px, env(safe-area-inset-top, 0px));
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .mobile-topbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .mobile-topbar-brand strong {
+        font-size: 17px;
+        letter-spacing: -0.6px;
+        color: var(--ink);
+      }
+      .mobile-topbar-brand span {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .mobile-topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .mobile-icon-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        color: var(--ink);
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        padding: 0;
+      }
+      .mobile-mode-pill {
+        display: flex;
+        padding: 3px;
+        border-radius: 10px;
+        background: color-mix(in srgb, var(--line) 50%, transparent);
+        border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+      .mobile-mode-pill button {
+        padding: 7px 10px;
+        border-radius: 8px;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 700;
+        min-height: 32px;
+      }
+      .mobile-mode-pill button.active {
+        background: var(--panel-strong);
+        color: var(--ink);
+        box-shadow: var(--shadow-1);
+      }
+      /* Bottom tab bar */
+      .mobile-nav {
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+        background: color-mix(in srgb, var(--panel-strong) 94%, transparent);
+        border-top: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        justify-content: space-around;
+        gap: 2px;
+      }
+      .mobile-nav button {
+        flex: 1;
+        max-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        min-height: 48px;
+        padding: 6px 4px;
+        border: 0;
+        border-radius: 10px;
+        background: transparent;
+        color: var(--muted);
+        font-family: var(--font-sans);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      .mobile-nav button .mn-icon {
+        font-size: 18px;
+        line-height: 1;
+      }
+      .mobile-nav button.active {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent-light) 55%, transparent);
+      }
+      .mobile-nav button[hidden] {
+        display: none !important;
+      }
+
+      /* Page title strip under mobile top */
+      .mobile-page-title:not([hidden]) {
+        display: block;
+        margin: 0 0 14px;
+        font-size: 26px;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        color: var(--ink);
+      }
+
+      /* Views */
+      .view.active {
+        animation: none;
+      }
+      #today.view.active {
+        min-height: 0;
+        justify-content: flex-start;
+      }
+
+      /* Mindmap → intentional mobile card stack */
+      .living-map {
+        flex: 0 1 auto;
+        padding: 0;
+        justify-content: flex-start;
+        align-items: stretch;
+        min-height: 0;
+      }
+      .map-stage {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: none;
+        aspect-ratio: auto;
+        min-height: 0;
+        max-height: none;
+        height: auto;
+        margin: 0;
+      }
+      .map-hub {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        aspect-ratio: auto;
+        max-height: none;
+        border-radius: var(--radius-lg);
+        padding: 16px 16px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        order: -1;
+      }
+      body.motion-on .map-hub { animation: none; }
+      .map-hub-ring {
+        margin-top: 0;
+      }
+      .map-node {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+      }
+      .map-node.is-expanded {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      .map-node-head {
+        min-height: 52px;
+        padding: 14px 14px;
+      }
+      .map-node-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .map-svg { display: none !important; }
+
+      /* Quick add: sticky above bottom nav */
+      .map-capture {
+        position: sticky;
+        bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+        margin: 14px 0 8px;
+        max-width: none;
+        width: 100%;
+        border-radius: 14px;
+        padding: 8px;
+        gap: 6px;
+        z-index: 30;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-2);
+      }
+      .map-capture button {
+        flex: 1 1 auto;
+        min-height: 40px;
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+
+      /* Forms & panels */
+      .panel {
+        padding: 14px;
+        border-radius: var(--radius-md);
+      }
+      .panel-heading {
+        margin: -14px -14px 12px;
+        padding: 12px 14px 10px;
+      }
+      .section-layout,
+      .notes-layout,
+      .study-focus-layout,
+      .lessons-section-layout,
+      .settings-layout,
+      .progress-history-grid,
+      .mood-layout,
+      .dashboard-grid,
+      .dashboard-feature-grid,
+      .stat-row {
+        grid-template-columns: 1fr !important;
+      }
+      .form-actions {
+        flex-wrap: wrap;
+      }
+      .form-actions .primary-button,
+      .form-actions .secondary-button {
+        flex: 1;
+        min-height: 44px;
+      }
+      input, textarea, select, .primary-button, .secondary-button, .danger-button {
+        min-height: 44px;
+        font-size: 16px; /* prevent iOS zoom */
+      }
+      textarea { min-height: 120px; }
+      .secondary-button, .primary-button, .danger-button, .ghost-button {
+        padding: 12px 14px;
+      }
+
+      /* Calendar */
+      .calendar-day { min-height: 64px; padding: 6px; }
+      .calendar { gap: 4px; }
+      .calendar-toolbar {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .cal-tab {
+        min-height: 40px;
+        padding: 8px 12px;
+      }
+
+      /* Notes */
+      .notes-layout {
+        min-height: 0;
+      }
+      .notes-list {
+        max-height: 220px;
+      }
+      .note-editor {
+        min-height: 240px;
+        font-size: 16px;
+      }
+      .note-toolbar button {
+        min-width: 40px;
+        min-height: 36px;
+      }
+
+      /* Focus / study */
+      .study-timer-display { font-size: 56px; letter-spacing: -2px; }
+      .study-timer-card { padding: 20px 16px; }
+      .study-timer-actions {
+        flex-direction: column;
+      }
+      .study-timer-actions .secondary-button,
+      .study-timer-actions .ghost-button {
+        width: 100%;
+        min-height: 48px;
+      }
+      .pomo-settings-panel {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        top: auto;
+        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-height: 50vh;
+        overflow-y: auto;
+      }
+
+      /* Settings theme grid */
+      .settings-theme-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .ui-style-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .setting-row {
+        padding: 14px;
+        min-height: 52px;
+      }
+
+      /* Command palette as bottom sheet */
+      .cmd-backdrop {
+        align-items: flex-end;
+        padding: 0;
+      }
+      .cmd-palette {
+        width: 100%;
+        max-height: 75dvh;
+        border-radius: 16px 16px 0 0;
+        animation: none;
+      }
+      .cmd-input-wrap input {
+        font-size: 16px;
+      }
+      .cmd-item {
+        min-height: 48px;
+        padding: 12px 14px;
+      }
+
+      /* Modals */
+      .modal-backdrop {
+        padding: 12px;
+        align-items: flex-end;
+      }
+      .homework-modal {
+        width: 100%;
+        max-height: 85dvh;
+        border-radius: 16px 16px 12px 12px;
+      }
+
+      .float-img { display: none; }
+      .lessons-grid { display: none !important; }
+      .lessons-mobile-list { display: grid !important; }
+      .lessons-desktop-only { display: none !important; }
+
+      .stat-row { grid-template-columns: 1fr; }
+      .habit-card {
+        flex-wrap: wrap;
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .map-capture button {
+        flex: 1 1 calc(33% - 6px);
+        font-size: 11px;
+        padding: 10px 6px;
+      }
+    }
