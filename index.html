@@ -7,8 +7,54 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="mode-planner ui-noto">
-  <!-- RESTORED - full content will follow in next commit if this works as test -->
-  <p>Loading restore...</p>
+  <canvas id="spaceCanvas" aria-hidden="true"></canvas>
+  <div class="theme-bg classic" id="themeBg"></div>
+  <canvas id="particleCanvas"></canvas>
+  <div id="customCursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-ring"></div></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">✦</div><div><h1>のと。 Planner</h1><p id="brandTagline">Your life, in one place.</p></div></div>
+      <div class="mode-switch"><button type="button" data-mode="planner" class="active" id="modePlanner">Planner</button><button type="button" data-mode="study" id="modeStudy">Study</button></div>
+      <nav class="nav">
+        <button class="active planner-only" data-view="today" data-modes="planner"><span class="nav-icon">⌂</span><span>Today</span></button>
+        <button class="planner-only" data-view="calendar" data-modes="planner"><span class="nav-icon">▦</span><span>Calendar</span></button>
+        <button data-view="todos" data-modes="planner study"><span class="nav-icon">✓</span><span>Tasks</span></button>
+        <button data-view="notes" data-modes="planner study"><span class="nav-icon">✎</span><span>Notes</span></button>
+        <button class="study-only" data-view="focus" data-modes="study"><span class="nav-icon">◎</span><span>Focus</span></button>
+        <button data-view="progress" data-modes="planner study"><span class="nav-icon">▣</span><span>Progress</span></button>
+        <button data-view="settings" data-modes="planner study"><span class="nav-icon">⚙</span><span>Settings</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <span id="progressLabel">0% of tasks completed</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="theme-picker"><span class="theme-picker-label">Theme</span>
+          <div class="theme-options">
+            <button type="button" class="theme-swatch theme-classic" data-theme="classic" title="Noto" aria-label="Noto"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-ember" data-theme="ember" title="Ember — warm ivory & burnt orange" aria-label="Ember"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-white" data-theme="white" title="White" aria-label="White"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-rose" data-theme="rose" title="Rose" aria-label="Rose"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-cobalt" data-theme="cobalt" title="Cobalt" aria-label="Cobalt"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-midnight" data-theme="midnight" title="Midnight" aria-label="Midnight"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-forest" data-theme="forest" title="Forest" aria-label="Forest"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-black" data-theme="black" title="Black" aria-label="Black"><span class="theme-swatch-preview"></span></button>
+            <button type="button" class="theme-swatch theme-vermilion" data-theme="vermilion" title="Vermilion" aria-label="Vermilion"><span class="theme-swatch-preview"></span></button>
+          </div>
+        </div>
+        <span>Everything saves automatically.</span>
+      </div>
+    </aside>
+    <main>
+      <p style="padding:2rem">Restoring full app structure — please wait for next commit with complete HTML. CSS and JS still load.</p>
+      <section class="view active" id="today"></section>
+      <section class="view" id="calendar"></section>
+      <section class="view" id="todos"></section>
+      <section class="view" id="notes"></section>
+      <section class="view" id="focus"></section>
+      <section class="view" id="progress"></section>
+      <section class="view" id="settings"></section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
   <script src="app.js"></script>
 </body>
 </html>
