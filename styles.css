@@ -94,126 +94,9 @@
 }
 
 
-/* ========== UI STYLES (3) ========== */
-body.ui-noto {
-  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
-  --shadow-1: 0 1px 2px rgba(32,34,31,0.05);
-  --shadow-2: 0 4px 16px rgba(32,34,31,0.07);
-  --border-w: 1px;
-}
-body.ui-studio {
-  --radius-sm: 3px; --radius-md: 5px; --radius-lg: 7px;
-  --shadow-1: none; --shadow-2: none; --shadow-3: none;
-  --border-w: 1.5px;
-}
-body.ui-studio .panel,
-body.ui-studio .map-node,
-body.ui-studio .stat,
-body.ui-studio .study-card,
-body.ui-studio .habit-card,
-body.ui-studio .note-list-item,
-body.ui-studio .calendar-day,
-body.ui-studio .lesson-day,
-body.ui-studio .setting-row {
-  box-shadow: none !important;
-  border-width: var(--border-w);
-}
-body.ui-studio .panel-heading {
-  border-bottom: var(--border-w) solid var(--line);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
-}
-body.ui-studio .eyebrow,
-body.ui-studio label,
-body.ui-studio .item-meta,
-body.ui-studio .habit-meta {
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 10px;
-  font-weight: 700;
-}
-body.ui-studio .primary-button,
-body.ui-studio .secondary-button {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 11px;
-  box-shadow: none !important;
-}
-body.ui-studio .primary-button {
-  background: var(--ink);
-  color: var(--panel-strong);
-}
-body.ui-studio .primary-button:hover { background: var(--ink); filter: brightness(1.1); }
-body.ui-studio .map-hub {
-  border-radius: var(--radius-md) !important;
-  aspect-ratio: auto;
-  max-height: none;
-  width: min(210px, 100%);
-}
-body.ui-studio .map-node:hover { transform: none; }
+/* UI styles removed — single refined Noto aesthetic for all of noto. */
 
-body.ui-terminal {
-  --radius-sm: 0; --radius-md: 0; --radius-lg: 0;
-  --shadow-1: none; --shadow-2: none; --shadow-3: none;
-  --border-w: 1px;
-}
-body.ui-terminal .brand h1,
-body.ui-terminal .topbar h2,
-body.ui-terminal .panel h3,
-body.ui-terminal .study-timer-display,
-body.ui-terminal .map-hub-title,
-body.ui-terminal .live-time {
-  font-family: var(--font-mono);
-  letter-spacing: -0.02em;
-}
-body.ui-terminal .panel,
-body.ui-terminal .map-node,
-body.ui-terminal .stat,
-body.ui-terminal .study-card,
-body.ui-terminal .habit-card,
-body.ui-terminal .note-list-item,
-body.ui-terminal .calendar-day,
-body.ui-terminal .lesson-day,
-body.ui-terminal .compact-status {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border: 1px solid var(--line);
-}
-body.ui-terminal .primary-button,
-body.ui-terminal .secondary-button,
-body.ui-terminal .danger-button,
-body.ui-terminal input,
-body.ui-terminal textarea,
-body.ui-terminal select {
-  border-radius: 0 !important;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-body.ui-terminal .map-hub {
-  border-radius: 0 !important;
-  aspect-ratio: auto;
-  max-height: none;
-  width: min(200px, 100%);
-  border: 2px solid var(--accent);
-}
-body.ui-terminal .nav button {
-  border-radius: 0;
-  border-left: 2px solid transparent;
-}
-body.ui-terminal .nav button.active {
-  border-left-color: var(--yellow);
-  background: rgba(255,255,255,0.06);
-}
-body.ui-terminal .study-timer-card { border-radius: 0 !important; }
-body.ui-terminal .mode-switch { border-radius: 0; }
-body.ui-terminal .mode-switch button { border-radius: 0; }
-body.ui-terminal .note-editor { border-radius: 0 !important; font-family: var(--font-mono) !important; }
-body.ui-terminal .list-item { border-bottom-style: dashed; }
-body.ui-terminal .tag { border-radius: 0; }
-
-* { box-sizing: border-box; }
-body { --accent: var(--green); --accent-light: var(--green-light); }
-/* Default (Noto) surface hierarchy when no dark/special theme class */
+/* Default surface hierarchy when no dark/special theme class */
 body:not(.theme-midnight):not(.theme-forest):not(.theme-black):not(.theme-vermilion) .panel {
   background: var(--panel-strong);
   border: 1px solid var(--line);
@@ -632,22 +515,10 @@ body.theme-vermilion.cursor-on .cursor-dot {
   color: var(--brand-ink);
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-body.ui-studio .ui-style-options,
-body.ui-studio .ui-style-row {
-  border-radius: 4px;
-  padding: 2px;
-}
-body.ui-studio .ui-style-btn { border-radius: 3px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
-body.ui-terminal .ui-style-options,
-body.ui-terminal .ui-style-row {
-  border-radius: 0;
-  padding: 0;
-}
-body.ui-terminal .ui-style-btn {
-  border-radius: 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-}
+
+
+
+
 
 /* ========== HEADER SEARCH ========== */
 .header-search {
@@ -806,10 +677,8 @@ body.ui-terminal .ui-style-btn {
   font-family: var(--font-sans);
   font-size: 13px;
 }
-body.ui-studio .cmd-palette { border-radius: var(--radius-md); }
-body.ui-terminal .cmd-palette,
-body.ui-terminal .cmd-item,
-body.ui-terminal .cmd-input-wrap { border-radius: 0; font-family: var(--font-mono); }
+
+
 
 
 
@@ -1169,20 +1038,9 @@ body.theme-vermilion .panel-heading {
   border-bottom-color: color-mix(in srgb, #c44a32 30%, #3a302a);
 }
 
-body.ui-studio .panel-heading {
-  border-bottom-width: var(--border-w);
-  padding: 12px 18px 10px;
-  margin: -18px -18px 14px;
-}
-body.ui-terminal .panel-heading {
-  border-bottom-style: solid;
-  border-radius: 0;
-}
-body.ui-terminal .panel-heading h3 {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  letter-spacing: -0.02em;
-}
+
+
+
 
 .dashboard-grid {
   display: grid;
@@ -3266,11 +3124,11 @@ body.theme-vermilion .settings-theme-grid .theme-swatch {
   --theme-surface: #fdfaf4;
   --theme-accent: #2a5f48;
 }
-.theme-paper {
-  --theme-preview: linear-gradient(145deg, #f3e9d5 0%, #faf3e4 40%, #e8dcc4 70%, #3d4a2e 100%);
-  --theme-sidebar: #2a2418;
-  --theme-surface: #fffaf0;
-  --theme-accent: #4a5534;
+.theme-ember {
+  --theme-preview: linear-gradient(145deg, #faf3e8 0%, #fff8ef 35%, #f0d9b8 65%, #c45c26 100%);
+  --theme-sidebar: #2a1c12;
+  --theme-surface: #fffbf5;
+  --theme-accent: #c45c26;
 }
 .theme-white {
   --theme-preview: linear-gradient(145deg, #f7f7f7 0%, #ffffff 40%, #e8e8e8 70%, #1a1a1a 100%);
@@ -3316,7 +3174,7 @@ body.theme-vermilion .settings-theme-grid .theme-swatch {
 }
 
 .theme-classic { --theme-preview: linear-gradient(135deg, #1a2b24, #2a5f48 50%, #e0b53a); }
-.theme-paper { --theme-preview: linear-gradient(135deg, #2c261c, #4a5534 50%, #e4d9c0); }
+.theme-ember { --theme-preview: linear-gradient(135deg, #2a1c12, #c45c26 50%, #faf3e8); }
 .theme-white { --theme-preview: linear-gradient(135deg, #1a1a1a, #888 50%, #ececec); }
 .theme-rose { --theme-preview: linear-gradient(135deg, #2c1e22, #a65d6a 50%, #f3ebe8); }
 .theme-cobalt { --theme-preview: linear-gradient(145deg, #eef1f6 0%, #fafbfc 40%, #d6e4f5 70%, #1e4d8c 100%); }
@@ -4043,7 +3901,7 @@ body.mode-planner .study-only { display: none !important; }
 
 /* Ensure light themes always separate bg / surface / elevated */
 /* —— Light palettes —— */
-body.theme-paper,
+body.theme-ember,
 body.theme-white,
 body.theme-rose,
 body.theme-cobalt {
@@ -4059,37 +3917,37 @@ body.theme-cobalt {
   --modal-header-bg: color-mix(in srgb, var(--accent-light) 40%, var(--panel-strong));
 }
 
-/* Paper — warm cream + dark ink + muted olive */
-body.theme-paper {
-  --bg: #f0e8d6;
-  --panel: #f7f0e2;
-  --panel-strong: #fffaf0;
+/* Ember — warm ivory + burnt orange + soft amber (professional) */
+body.theme-ember {
+  --bg: #f7f0e6;
+  --panel: #faf5ed;
+  --panel-strong: #fffbf5;
   --elevated: #ffffff;
-  --ink: #2a2216;
-  --muted: #6b604c;
-  --faint: #9a8f7a;
-  --line: #d4c8b0;
-  --green: #4a5534;
-  --green-light: #e2e6d4;
-  --orange: #8f6b45;
-  --orange-light: #efe6d8;
-  --yellow: #a88b2e;
-  --red: #8a3e32;
-  --sidebar: #2a2418;
-  --brand-ink: #2a2418;
-  --accent: #4a5534;
-  --accent-hover: #3a4428;
-  --accent-light: #e2e6d4;
-  --accent-contrast: #fffaf0;
-  --success: #4a5534;
-  --warning: #8f6b45;
-  --error: #8a3e32;
-  --weekend-bg: rgba(143, 107, 69, 0.09);
-  --node-bg: #fffaf0;
-  --node-border: #d4c8b0;
-  --node-hub-border: color-mix(in srgb, var(--accent) 40%, var(--line));
-  --map-line: color-mix(in srgb, var(--accent) 30%, var(--line));
-  --particle-color: #4a5534;
+  --ink: #2a1f14;
+  --muted: #7a6550;
+  --faint: #a8947c;
+  --line: #e0d2c0;
+  --green: #c45c26;
+  --green-light: #f5e4d4;
+  --orange: #d4782e;
+  --orange-light: #f8e8d4;
+  --yellow: #e8a838;
+  --red: #b04434;
+  --sidebar: #2a1c12;
+  --brand-ink: #2a1c12;
+  --accent: #c45c26;
+  --accent-hover: #a84c1e;
+  --accent-light: #f5e4d4;
+  --accent-contrast: #fffbf5;
+  --success: #3d7a52;
+  --warning: #d4782e;
+  --error: #b04434;
+  --weekend-bg: rgba(196, 92, 38, 0.08);
+  --node-bg: #fffbf5;
+  --node-border: #e0d2c0;
+  --node-hub-border: color-mix(in srgb, var(--accent) 42%, var(--line));
+  --map-line: color-mix(in srgb, var(--accent) 32%, var(--line));
+  --particle-color: #c45c26;
 }
 
 /* White — pure monochrome */
